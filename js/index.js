@@ -43,7 +43,6 @@ function createStaff() {
   staffList.push(newStaff);
 
   renderStaffs();
-
   setStaffList();
 
   document.getElementById("formUser").reset();
@@ -70,15 +69,6 @@ function validateForm(
   isValid &= checkSalary(salary, "tbLuongCB", 1000000, 20000000);
   isValid &= checkPosition(positionStaff, "tbChucVu");
   isValid &= checkHour(hour, "tbGiolam", 80, 200);
-
-  var arrSpan = document.querySelectorAll(".sp-thongbao");
-  for (var i = 0; i < arrSpan.length; i++) {
-    if (arrSpan[i].innerHTML !== "") {
-      arrSpan[i].style.display = "inline-block";
-    } else {
-      arrSpan[i].style.display = "none";
-    }
-  }
 
   return isValid;
 }
@@ -259,10 +249,12 @@ function hideButtonUpdate() {
 function required(value, spanId) {
   if (value.length === 0) {
     document.getElementById(spanId).innerHTML = "*Trường này bắt buộc nhập!";
+    document.getElementById(spanId).style.display = "inline-block";
     return false;
   }
 
   document.getElementById(spanId).innerHTML = "";
+  document.getElementById(spanId).style.display = "none";
   return true;
 }
 
@@ -271,10 +263,12 @@ function length(value, spanId, min, max) {
     document.getElementById(
       spanId
     ).innerHTML = `*Độ dài phải từ ${min} đến ${max} kí tự`;
+    document.getElementById(spanId).style.display = "inline-block";
     return false;
   }
 
   document.getElementById(spanId).innerHTML = "";
+  document.getElementById(spanId).style.display = "none";
   return true;
 }
 
@@ -283,11 +277,13 @@ function string(value, spanId) {
     /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+$/g;
   if (pattern.test(value)) {
     document.getElementById(spanId).innerHTML = "";
+    document.getElementById(spanId).style.display = "none";
     return true;
   }
 
   document.getElementById(spanId).innerHTML =
     "*Chỉ chấp nhận kí tự từ a đến z!";
+  document.getElementById(spanId).style.display = "inline-block";
   return false;
 }
 
@@ -296,10 +292,12 @@ function checkEmail(value, spanId) {
 
   if (pattern.test(value)) {
     document.getElementById(spanId).innerHTML = "";
+    document.getElementById(spanId).style.display = "none";
     return true;
   }
 
   document.getElementById(spanId).innerHTML = "*Email không hợp lệ!";
+  document.getElementById(spanId).style.display = "inline-block";
   return false;
 }
 
@@ -309,11 +307,13 @@ function checkPassword(value, spanId) {
 
   if (pattern.test(value)) {
     document.getElementById(spanId).innerHTML = "";
+    document.getElementById(spanId).style.display = "none";
     return true;
   }
 
   document.getElementById(spanId).innerHTML =
     "*Mật khẩu từ 6-10 ký tự (chứa ít nhất 1 ký tự số, 1 ký tự in hoa, 1 ký tự đặc biệt)";
+  document.getElementById(spanId).style.display = "inline-block";
   return false;
 }
 
@@ -322,10 +322,12 @@ function checkDate(value, spanId) {
 
   if (pattern.test(value)) {
     document.getElementById(spanId).innerHTML = "";
+    document.getElementById(spanId).style.display = "none";
     return true;
   }
 
   document.getElementById(spanId).innerHTML = "*Ngày làm không hợp lệ!";
+  document.getElementById(spanId).style.display = "inline-block";
   return false;
 }
 
@@ -334,20 +336,24 @@ function checkSalary(value, spanId, min, max) {
     document.getElementById(
       spanId
     ).innerHTML = `*Lương cơ bản phải từ ${min} đến ${max}`;
+    document.getElementById(spanId).style.display = "inline-block";
     return false;
   }
 
   document.getElementById(spanId).innerHTML = "";
+  document.getElementById(spanId).style.display = "none";
   return true;
 }
 
 function checkPosition(value, spanId) {
   if (value === "") {
     document.getElementById(spanId).innerHTML = "*Vui lòng chọn chức vụ!";
+    document.getElementById(spanId).style.display = "inline-block";
     return false;
   }
 
   document.getElementById(spanId).innerHTML = "";
+  document.getElementById(spanId).style.display = "none";
   return true;
 }
 
@@ -356,10 +362,12 @@ function checkHour(value, spanId, min, max) {
     document.getElementById(
       spanId
     ).innerHTML = `*Số giờ làm trong tháng phải từ ${min} giờ đến ${max} giờ`;
+    document.getElementById(spanId).style.display = "inline-block";
     return false;
   }
 
   document.getElementById(spanId).innerHTML = "";
+  document.getElementById(spanId).style.display = "none";
   return true;
 }
 
